@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sufi Night 2026</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="sufi-theme">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sufi-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <i class="bi bi-moon-stars-fill text-gold fs-3"></i>
+                <span class="brand-title">Sufi Night 2026</span>
+            </a>
+            <button class="navbar-toggler border-gold" type="button" data-bs-toggle="collapse" data-bs-target="#sufiNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="sufiNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">About Event</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#lineup">Lineup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-gold btn-sm px-3 rounded-pill" href="#registerForm">Register Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="sufi-footer text-center text-lg-start mt-5 py-4 border-top border-gold-subtle">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5">
+                    <h5 class="text-gold font-cinzel mb-2"><i class="bi bi-moon-stars me-2"></i>An Evening of Mystical Echoes</h5>
+                    <p class="text-secondary small mb-0">Immerse yourself in soul-stirring Qawwali, whirling ecstasy, and divine poetry under the starry night sky.</p>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <h6 class="text-gold font-cinzel mb-2">Event Info</h6>
+                    <ul class="list-unstyled text-secondary small mb-0">
+                        <li><i class="bi bi-calendar3 me-2 text-gold"></i>Saturday, Nov 14, 2026</li>
+                        <li><i class="bi bi-clock me-2 text-gold"></i>7:00 PM onwards</li>
+                        <li><i class="bi bi-geo-alt me-2 text-gold"></i>Royal Heritage Amphitheatre</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-gold font-cinzel mb-2">Support</h6>
+                    <p class="text-secondary small mb-1"><i class="bi bi-envelope me-2 text-gold"></i>events@sufinight.com</p>
+                    <p class="text-secondary small"><i class="bi bi-telephone me-2 text-gold"></i>+91 98765 43210</p>
+                </div>
+            </div>
+            <hr class="border-gold-subtle my-3" />
+            <div class="text-center text-secondary small">
+                &copy; 2026 Sufi Night Cultural Festival. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

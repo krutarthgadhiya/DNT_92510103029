@@ -1,0 +1,273 @@
+@page
+@model PR_4.Pages.IndexModel
+@{
+    ViewData["Title"] = "Sufi Night 2026 - Registration Portal";
+}
+
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <div class="hero-badge mb-3">
+            <i class="bi bi-stars"></i> Annual Cultural Gathering 2026
+        </div>
+        <h1 class="hero-title mb-3">Sufi Night: Echoes of the Divine</h1>
+        <p class="hero-sub mx-auto mb-4">
+            Step into a magical evening filled with mesmerizing Qawwali performances, whirling dervishes, 
+            and soulful acoustic harmonies under the stars.
+        </p>
+
+        <!-- Key Details Grid -->
+        <div class="row g-3 justify-content-center mb-5 text-start">
+            <div class="col-6 col-md-3">
+                <div class="info-card d-flex align-items-center gap-3">
+                    <div class="info-icon"><i class="bi bi-calendar-event"></i></div>
+                    <div>
+                        <div class="text-secondary small">Date</div>
+                        <div class="fw-bold">Nov 14, 2026</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="info-card d-flex align-items-center gap-3">
+                    <div class="info-icon"><i class="bi bi-clock-history"></i></div>
+                    <div>
+                        <div class="text-secondary small">Time</div>
+                        <div class="fw-bold">7:00 PM Onwards</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="info-card d-flex align-items-center gap-3">
+                    <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                    <div>
+                        <div class="text-secondary small">Venue</div>
+                        <div class="fw-bold">Royal Amphitheatre</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="info-card d-flex align-items-center gap-3">
+                    <div class="info-icon"><i class="bi bi-music-note-beamed"></i></div>
+                    <div>
+                        <div class="text-secondary small">Lineup</div>
+                        <div class="fw-bold">Master Qawwals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Form Section -->
+<section id="registerForm" class="py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+                <div class="glass-card">
+                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-gold-subtle pb-3">
+                        <div>
+                            <h2 class="card-header-title border-0 p-0 m-0"><i class="bi bi-ticket-perforated me-2"></i>Event Pass Registration</h2>
+                            <p class="text-secondary small mb-0">Fill in your details below. Valid ID required at venue gate.</p>
+                        </div>
+                        <span class="badge bg-gold text-dark px-3 py-2 rounded-pill fw-bold"><i class="bi bi-lightning-fill me-1"></i>Limited Seats</span>
+                    </div>
+
+                    <form method="post" id="sufiForm">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <!-- Personal Information -->
+                        <h5 class="text-gold font-cinzel mb-3"><i class="bi bi-person-badge me-2"></i>1. Attendee Information</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label asp-for="Registration.FullName" class="form-label"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-gold-subtle text-gold"><i class="bi bi-person"></i></span>
+                                    <input asp-for="Registration.FullName" class="form-control" placeholder="e.g. Rahat Ali" />
+                                </div>
+                                <span asp-validation-for="Registration.FullName" class="field-validation-error"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Registration.Email" class="form-label"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-gold-subtle text-gold"><i class="bi bi-envelope"></i></span>
+                                    <input asp-for="Registration.Email" class="form-control" placeholder="name@domain.com" />
+                                </div>
+                                <span asp-validation-for="Registration.Email" class="field-validation-error"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Registration.Phone" class="form-label"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-gold-subtle text-gold"><i class="bi bi-telephone"></i></span>
+                                    <input asp-for="Registration.Phone" class="form-control" placeholder="10-digit mobile number" />
+                                </div>
+                                <span asp-validation-for="Registration.Phone" class="field-validation-error"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Registration.NumberOfTickets" class="form-label"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-gold-subtle text-gold"><i class="bi bi-people"></i></span>
+                                    <input asp-for="Registration.NumberOfTickets" id="ticketCountInput" type="number" min="1" max="10" class="form-control" />
+                                </div>
+                                <span asp-validation-for="Registration.NumberOfTickets" class="field-validation-error"></span>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Tier Selection -->
+                        <h5 class="text-gold font-cinzel mb-3"><i class="bi bi-award me-2"></i>2. Choose Ticket Tier</h5>
+                        <input type="hidden" asp-for="Registration.TicketType" id="selectedTicketType" />
+                        <div class="row g-3 mb-2">
+                            <div class="col-md-4">
+                                <div class="ticket-option-card text-center" data-type="General" data-price="999">
+                                    <div class="badge bg-secondary mb-2">Standard</div>
+                                    <h6 class="fw-bold mb-1">General Pass</h6>
+                                    <div class="text-gold font-cinzel fs-4 fw-bold mb-2">₹999</div>
+                                    <p class="text-secondary small mb-0">General amphitheatre seating with clear acoustics.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="ticket-option-card text-center" data-type="VIP" data-price="2499">
+                                    <div class="badge bg-warning text-dark fw-bold mb-2">⭐ Best View</div>
+                                    <h6 class="fw-bold mb-1">VIP Royal Pass</h6>
+                                    <div class="text-gold font-cinzel fs-4 fw-bold mb-2">₹2,499</div>
+                                    <p class="text-secondary small mb-0">Front-row cushioned seating + complimentary Sufi refreshments.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="ticket-option-card text-center" data-type="Student" data-price="499">
+                                    <div class="badge bg-info text-dark fw-bold mb-2">Student Discount</div>
+                                    <h6 class="fw-bold mb-1">Student Pass</h6>
+                                    <div class="text-gold font-cinzel fs-4 fw-bold mb-2">₹499</div>
+                                    <p class="text-secondary small mb-0">Special student gallery. Valid college ID required.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Registration.TicketType" class="field-validation-error mb-4"></span>
+
+                        <!-- Seating Area Selection -->
+                        <h5 class="text-gold font-cinzel mb-3 mt-4"><i class="bi bi-grid-3x3-gap me-2"></i>3. Preferred Seating Zone</h5>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-4">
+                                <div class="form-check custom-radio-box p-3 border border-gold-subtle rounded-3 bg-dark">
+                                    <input asp-for="Registration.Seating" type="radio" value="Front Enclosure" class="form-check-input" id="seatFront" />
+                                    <label class="form-check-label ms-2" for="seatFront">
+                                        <span class="d-block fw-bold text-light">Front Enclosure</span>
+                                        <span class="text-secondary small">Closer to the live stage setup</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check custom-radio-box p-3 border border-gold-subtle rounded-3 bg-dark">
+                                    <input asp-for="Registration.Seating" type="radio" value="Central Terrace" class="form-check-input" id="seatMiddle" />
+                                    <label class="form-check-label ms-2" for="seatMiddle">
+                                        <span class="d-block fw-bold text-light">Central Terrace</span>
+                                        <span class="text-secondary small">Balanced sound and viewing angle</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check custom-radio-box p-3 border border-gold-subtle rounded-3 bg-dark">
+                                    <input asp-for="Registration.Seating" type="radio" value="Elevated Balcony" class="form-check-input" id="seatBack" />
+                                    <label class="form-check-label ms-2" for="seatBack">
+                                        <span class="d-block fw-bold text-light">Elevated Balcony</span>
+                                        <span class="text-secondary small">Panoramic view of the amphitheatre</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Registration.Seating" class="field-validation-error mb-4"></span>
+
+                        <!-- Live Summary Box -->
+                        <div class="p-3 my-4 rounded-3 border border-gold style-summary bg-dark d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                            <div>
+                                <div class="text-secondary small">Estimated Total Amount:</div>
+                                <div class="fs-3 fw-bold text-gold font-cinzel" id="totalPriceDisplay">₹0</div>
+                            </div>
+                            <div class="text-md-end text-secondary small">
+                                Includes GST & Event Pass Security Handling
+                            </div>
+                        </div>
+
+                        <!-- Terms & Submit -->
+                        <div class="form-check mb-4">
+                            <input asp-for="Registration.AgreeTerms" class="form-check-input" id="termsCheck" required />
+                            <label class="form-check-label text-secondary small" for="termsCheck">
+                                I hereby confirm that the above details are accurate and agree to abide by Sufi Night venue regulations and security checks.
+                            </label>
+                            <span asp-validation-for="Registration.AgreeTerms" class="field-validation-error"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-gold btn-lg py-3 rounded-3 fw-bold fs-5">
+                                <i class="bi bi-shield-check me-2"></i>Confirm & Generate Event Pass
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        // Adapter for MustBeTrueAttribute (unobtrusive validation)
+        (function ($) {
+            if ($ && $.validator && $.validator.unobtrusive) {
+                $.validator.addMethod('mustbetrue', function (value, element, params) {
+                    return element.checked === true;
+                });
+                $.validator.unobtrusive.adapters.addBool('mustbetrue');
+            }
+        })(jQuery);
+
+        $(document).ready(function () {
+                // Prevent form submission if terms not checked (extra client-side safeguard)
+                $('#sufiForm').on('submit', function (e) {
+                    if (!$('#termsCheck').is(':checked')) {
+                        e.preventDefault();
+                        $('#termsCheck').focus();
+                        return false;
+                    }
+                });
+            // Interactive Ticket Tier Selection
+            $('.ticket-option-card').click(function () {
+                $('.ticket-option-card').removeClass('selected');
+                $(this).addClass('selected');
+                var type = $(this).data('type');
+                $('#selectedTicketType').val(type);
+                updatePrice();
+            });
+
+            // Re-select if model had value
+            var currentType = $('#selectedTicketType').val();
+            if(currentType) {
+                $('.ticket-option-card[data-type="' + currentType + '"]').addClass('selected');
+            }
+
+            $('#ticketCountInput').on('input change', function () {
+                updatePrice();
+            });
+
+            function updatePrice() {
+                var selectedCard = $('.ticket-option-card.selected');
+                if (selectedCard.length > 0) {
+                    var price = parseInt(selectedCard.data('price')) || 0;
+                    var count = parseInt($('#ticketCountInput').val()) || 1;
+                    var total = price * count;
+                    $('#totalPriceDisplay').text('₹' + total.toLocaleString('en-IN'));
+                } else {
+                    $('#totalPriceDisplay').text('₹0');
+                }
+            }
+
+            updatePrice();
+        });
+    </script>
+}
+

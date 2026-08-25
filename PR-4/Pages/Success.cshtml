@@ -1,0 +1,93 @@
+@page
+@model PR_4.Pages.SuccessModel
+@{
+    ViewData["Title"] = "Registration Confirmed - Sufi Night 2026";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <!-- Top Status Banner -->
+            <div class="text-center mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-success bg-opacity-25 border border-success text-success p-3 rounded-circle mb-3 fs-2">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h1 class="hero-title fs-2 mb-2">Registration Confirmed!</h1>
+                <p class="text-secondary">Your official digital pass for Sufi Night 2026 is ready below.</p>
+            </div>
+
+            <!-- Digital Pass Card -->
+            <div class="pass-ticket mb-4">
+                <div class="pass-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-gold font-cinzel fw-bold fs-4"><i class="bi bi-moon-stars me-2"></i>SUFI NIGHT 2026</div>
+                        <div class="text-secondary small">Official Entry Pass & Pass ID</div>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-gold text-dark font-cinzel fw-bold fs-6 px-3 py-2">@Model.BookingRef</span>
+                    </div>
+                </div>
+
+                <div class="pass-body">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-8">
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="text-secondary small">Attendee Name</div>
+                                    <div class="fw-bold text-light fs-5">@Model.Name</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-secondary small">Ticket Tier</div>
+                                    <div class="fw-bold text-gold fs-5">@Model.TicketType Pass</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-secondary small">Quantity</div>
+                                    <div class="fw-bold text-light">@Model.NumberOfTickets Person(s)</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-secondary small">Seating Area</div>
+                                    <div class="fw-bold text-light">@Model.Seating</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-secondary small">Email Contact</div>
+                                    <div class="text-truncate text-light small">@Model.Email</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-secondary small">Total Paid</div>
+                                    <div class="fw-bold text-gold">@Model.TotalPrice</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QR Code Column -->
+                        <div class="col-md-4 text-center border-start border-gold-subtle ps-md-4">
+                            <div class="qr-box mb-2">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=@Model.BookingRef" alt="Ticket QR Code" width="130" height="130" />
+                            </div>
+                            <div class="text-secondary small"><i class="bi bi-qr-code-scan me-1"></i>Scan at Gate 2</div>
+                        </div>
+                    </div>
+
+                    <hr class="border-gold-subtle my-4" />
+
+                    <div class="row text-secondary small gy-2">
+                        <div class="col-sm-6"><i class="bi bi-calendar3 text-gold me-2"></i>Saturday, Nov 14, 2026</div>
+                        <div class="col-sm-6"><i class="bi bi-clock text-gold me-2"></i>Gates open at 6:00 PM</div>
+                        <div class="col-sm-12"><i class="bi bi-geo-alt text-gold me-2"></i>Royal Heritage Amphitheatre, Main Lawn</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <button onclick="window.print()" class="btn btn-gold px-4 py-2 rounded-pill">
+                    <i class="bi bi-printer me-2"></i>Print / Save Ticket
+                </button>
+                <a href="/" class="btn btn-outline-gold px-4 py-2 rounded-pill">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Portal
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
